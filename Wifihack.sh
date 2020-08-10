@@ -51,7 +51,8 @@ function starAttack(){
                 ifconfig ${networkCard}mon down && macchanger -a ${networkCard}mon > /dev/null 2>&1
                 ifconfig ${networkCard}mon up; killall dhclient wpa_supplicant 2>/dev/null
 
-                echo -e "${yellowColour}[*]${endColour}${grayColour} Nueva dirección MAC asignada ${endColour}${purpleColour}[${endColour}${blueColour}$(macchanger -s ${networkCard}mon | gr                                               >
+                echo -e "${yellowColour}[*]${endColour}${grayColour} Nueva dirección MAC asignada ${endColour}${purpleColour}[${endColour}${blueColour}$(macchanger -s ${networkCard}mon | grep -i current | xargs | cut -d ' ' -f '3-100')${endColour}${purpleColour}]${endColour}"
+                                     
 
         if [ "$(echo $attack_mode)" == "Handshake" ]; then
 
